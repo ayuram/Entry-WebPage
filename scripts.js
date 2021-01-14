@@ -23,7 +23,6 @@ function post(api_url, data, success_callback, fail_callback) {
         // fetch values from the frontend
         var new_signup = document.getElementById('waitlist_email').value; //fetch user signing up on frontend
         var current_url = document.URL; //fetch current URL, including potential referral token
-    
         const success_callback = function(response) {
             // fetching responses
             waiter_email = response['registered_email']
@@ -48,6 +47,7 @@ function post(api_url, data, success_callback, fail_callback) {
             $('#all_waiter_spots').html(total_waiters_currently)
             $('#referral_link_url').html('Your referral link is:' + referral_link)
             $('#info_ref_link').html('Click on the button to copy your referral link (also sent to your email).')
+            alert('Success!');
         };
     
         const fail_callback = function(response) {
@@ -59,6 +59,7 @@ function post(api_url, data, success_callback, fail_callback) {
             } else if (response_code == 400) {
                 $('#error_message').html("Error!");
             }
+            alert('Something went wrong...');
         };
     
         post('https://www.getwaitlist.com/waitlist',
